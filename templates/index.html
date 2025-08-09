@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matcha Color Grader</title>
+</head>
+<body>
+    <h1>🍵 Matcha Color Grader</h1>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if grade %}
+        <h2>Grade: {{ grade }}</h2>
+        <p>{{ tip }}</p>
+    {% endif %}
+</body>
+</html>
