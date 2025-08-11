@@ -56,16 +56,16 @@ def grade_matcha(image_path):
     avg_val = float(np.mean(hsv[:, :, 2]))   
     avg_hue_deg = avg_hue * 2.0        # Convert hue to degrees (0-360)
 
-    # Grade based on heuristics of hue, saturation, and brightness
-    if 90 <= avg_hue_deg <= 140 and avg_sat >= 100 and avg_val >= 60:
+    # Grade based on heuristics of hue
+    if 90 <= avg_hue_deg <= 140:
         grade = "Ceremonial"
-        tip = "Bright, vibrant green. Likely fresh, high-quality matcha."
-    elif (70 <= avg_hue_deg < 90 or 140 < avg_hue_deg <= 160) and avg_sat >= 70:
+        tip = "Bright, vibrant green. Likely fresh, high-quality matcha. Avg hue deg is " + str(avg_hue_deg)
+    elif (70 <= avg_hue_deg < 90 or 140 < avg_hue_deg <= 160):
         grade = "Culinary / Medium"
-        tip = "Green but less vibrant. Could be culinary grade or slightly older."
+        tip = "Green but less vibrant. Could be culinary grade or slightly older. Avg hue deg is " + str(avg_hue_deg)
     else:
         grade = "Low Grade / Old"
-        tip = "Yellow/brown tones or low saturation. Could be oxidized or low-grade matcha."
+        tip = "Yellow/brown tones or low saturation. Could be oxidized or low-grade matcha. Avg hue deg is " + str(avg_hue_deg)
 
     return grade, tip
 
